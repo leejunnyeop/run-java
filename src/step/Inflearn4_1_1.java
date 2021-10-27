@@ -1,27 +1,33 @@
 package step;
 
 
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Inflearn4_1_1 {
 
 	public static void main(String[] args) {
+		HashMap<Character, Integer> map = new HashMap<>();
+		char answer =' ';
 		Scanner kb = new Scanner(System.in);
-		int answer =0;
 		int n = kb.nextInt();
-		String st[] = new String[n];
-		for(int i =0; i < n; i++) {
-			st[i] = kb.nextLine();
+		String st = kb.next();
+		for(char x: st.toCharArray()) {
+            map.put(x, map.getOrDefault(x,0)+1);			
 		}
-		for(int i =0; i < n; i++) {
-			answer = 0;
-			for(int y =1; y < n; y++) {
-				if( st[i] == st[y]) {
-					answer ++;
+		int max =Integer.MAX_VALUE;
+		for(char key: map.keySet())
+		//System.out.println(key+" "+map.get(key));
+			if(map.get(key) > max) {
+				max = map.get(key);
+				answer = key;
+			}
+		System.out.println(answer);
+		kb.close();
 				}
 			}
-			kb.close();
-		}
-	}
+		
+		
+	
 
